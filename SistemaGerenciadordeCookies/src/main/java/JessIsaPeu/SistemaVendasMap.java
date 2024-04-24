@@ -7,16 +7,18 @@ import java.util.Map;
 
 public class SistemaVendasMap implements SistemaVendas{
     private Map<String,Cookie> cookies;
+    private Map<String,Combos> combos;
     public SistemaVendasMap(){
         this.cookies = new HashMap<String, Cookie>();
+        this.combos = new HashMap<String,Combos>();
     }
 
     @Override
-    public void cadastraCookies(Cookie cookie) throws CookieJaExisteException {
-        if (this.cookies.containsKey(cookie.getSabor())){
+    public void cadastraCookies(String sabor, double preco, TipoCookie tipo) throws CookieJaExisteException {
+        if (this.cookies.containsKey(sabor)){
             throw new CookieJaExisteException("Já existe este Cookie cadastrado");
         }else {
-            this.cookies.put(cookie.getSabor(),cookie);
+            this.cookies.put(sabor, new Cookie(sabor,preco, tipo));
             System.out.println("Cookie cadastrado com sucesso!");
         }
     }
@@ -49,9 +51,9 @@ public class SistemaVendasMap implements SistemaVendas{
     }
 
     @Override
-    public void removeSabor(Cookie cookie) throws CookieNaoExisteException {
-        if (this.cookies.containsKey(cookie)){
-            this.cookies.remove(cookie);
+    public void removeSabor(String sabor) throws CookieNaoExisteException {
+        if (this.cookies.containsKey(sabor)){
+            this.cookies.remove(sabor);
             System.out.println("Cookie removido com sucesso!");
         } else {
             throw new CookieNaoExisteException("Não foi encontrado este cookie");
@@ -59,10 +61,10 @@ public class SistemaVendasMap implements SistemaVendas{
     }
 
     @Override
-    public List<Cookie> pesquisaPorPreco(double preco) {
+    public List<Cookie> pesquisaValoresPorFaixa(double valorMinimo, double valorMaximo) {
         List<Cookie> listinha = new ArrayList<>();
         for (Cookie c: this.cookies.values()){
-            if (c.getPreco() == preco){
+            if (c.getPreco()>=valorMinimo && c.getPreco()<=valorMaximo){
                 listinha.add(c);
             }
         }
@@ -75,11 +77,11 @@ public class SistemaVendasMap implements SistemaVendas{
     }
 
     @Override
-    public List<Cookie> pesquisaCombos(String combo) {
-       List<Cookie> listaa = new ArrayList<>();
-       for (Cookie c: this.cookies.values()){
-           if (c.getCombos().equals(combo)){
-               listaa.add(c);
+    public List<Combos> pesquisaCombos(String combo) {
+       List<Combos> listaa = new ArrayList<>();
+       for (Combos cb: this.combos.values()){
+           if (cb.getNome().equals(combo)){
+               listaa.add(cb);
            }
        }
        return listaa;

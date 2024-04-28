@@ -24,6 +24,16 @@ public class SistemaVendasMap implements SistemaVendas{
     }
 
     @Override
+    public void cadastraCombos(String nome, double preco) throws ComboJaExisteException {
+        if (this.combos.containsKey(nome)){
+            throw new ComboJaExisteException("Já existe este combo");
+        } else {
+            this.combos.put(nome, new Combos(nome, preco));
+            System.out.println("Combo cadastrado com sucesso!");
+        }
+    }
+
+    @Override
     public List<Cookie> pesquisaCookiesPorSabor(String sabor){
         List<Cookie> lista = new ArrayList<>();
         for (Cookie c: this.cookies.values()){
@@ -57,6 +67,14 @@ public class SistemaVendasMap implements SistemaVendas{
             System.out.println("Cookie removido com sucesso!");
         } else {
             throw new CookieNaoExisteException("Não foi encontrado este cookie");
+        }
+    }
+    public void removeCombo(String nome) throws ComboNaoExisteException {
+        if (this.combos.containsKey(nome)){
+            this.combos.remove(nome);
+            System.out.println("Combo removido com sucesso!");
+        } else {
+            throw new ComboNaoExisteException("Não foi encontrado este combo");
         }
     }
 

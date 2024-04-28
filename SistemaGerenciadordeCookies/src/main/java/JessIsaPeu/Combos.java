@@ -6,8 +6,12 @@ import java.util.Objects;
 public class Combos {
     private String nome;
     private List<Cookie> sabor;
-    private List<Cookie> preco;
-    public Combos(String nome, List<Cookie> sabor, List<Cookie> preco){
+    private double preco;
+    public Combos(String nome, double preco){
+        this.nome = nome;
+        this.preco = preco;
+    }
+    public Combos(String nome, List<Cookie> sabor, double preco){
         this.nome = nome;
         this.sabor = sabor;
         this.preco = preco;
@@ -51,11 +55,11 @@ public class Combos {
         this.sabor = sabor;
     }
 
-    public List<Cookie> getPreco() {
+    public double getPreco() {
         return preco;
     }
 
-    public void setPreco(List<Cookie> preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 }

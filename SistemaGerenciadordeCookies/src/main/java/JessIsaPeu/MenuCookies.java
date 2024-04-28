@@ -30,6 +30,7 @@ class MenuCookies extends JFrame{
         JMenuItem itemPesquisaCombos = new JMenuItem("Listar combos");
         JMenuItem itemContaCookiesDoTipo = new JMenuItem("Quantidade de cookies do tipo");
         JMenuItem itemRemoveSabor = new JMenuItem("Remover sabor");
+        JMenuItem itemRemoveCombo = new JMenuItem("Remover combo");
         JMenuItem itemExisteCookiesDoTipo = new JMenuItem("Existe cookie do tipo");
         JMenuItem itemExisteSabor = new JMenuItem("Existe cookies com sabor");
 
@@ -43,6 +44,7 @@ class MenuCookies extends JFrame{
         menuConta.add(itemContaCookiesDoTipo);
 
         menuRemove.add(itemRemoveSabor);
+        menuRemove.add(itemRemoveCombo);
 
         menuExiste.add(itemExisteCookiesDoTipo);
         menuExiste.add(itemExisteSabor);
@@ -110,6 +112,15 @@ class MenuCookies extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(frame, "Você selecionou: Remover sabor");
                 String sabor = JOptionPane.showInputDialog("Digite o sabor para remover:");
+
+            }
+        });
+
+        itemRemoveCombo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Você selecionou: Remover combo");
+                String combo = JOptionPane.showInputDialog("Digite o combo para remover:");
 
             }
         });

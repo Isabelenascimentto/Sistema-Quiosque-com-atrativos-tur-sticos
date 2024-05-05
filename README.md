@@ -18,4 +18,4 @@ Listagem dos métodos contidos neste sistema:
 13. void recuperarDadosCookies();
 14. void recuperarDadosCombos();
 
-    Por ser um gerenciamento, podem surgir outros tipos de métodos/funções, que ainda não foram implementados, principalmente sobre os combos. 
+    Por ser um gerenciamento, podem surgir outros tipos de métodos/funções, que ainda não foram implementados, principalmente sobre os combos, como adicionar bebidas, fazer pedidos, etc.
